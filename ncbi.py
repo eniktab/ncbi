@@ -88,7 +88,7 @@ def sendemail():
 
 """Read The input file """ 
 
-  
+
 t=np.loadtxt("/home/chemgen/Desktop/Over Again/SSU-97per-BLASTout.csv",dtype=str,delimiter='|',skiprows=0,usecols=(1,))
 output=open("/home/chemgen/Desktop/Over Again/Endo18-97per-PYTHONout.csv", "a")
 counter = 0
@@ -99,6 +99,7 @@ for line in t:
     print("Running time:","--- %s Seconds" % (time.time() - start_time))    
     line=line[2:-1]    
     line=line.strip()
+    # retry to handle closed connections
     try: 
         myfunct(line)
         timetosleep= random.randrange(2,6)
